@@ -31,8 +31,10 @@ const Data = () => {
     console.log("Selected sort option:", value);
   };
 
-  const onPriceChange = (value: [number, number]) => {
-    setPriceRange(value);
+  const onPriceChange = (value: number[]) => {
+    if (value.length === 2) {
+      setPriceRange([value[0], value[1]]);
+    }
   };
 
   return (
