@@ -71,7 +71,7 @@ const Data = () => {
             </span>
           </p>
           <button className="mt-4 w-full bg-[#46A358] text-white py-2 rounded-md">
-            Filter
+            <a className="text-white" href="">Filter</a>
           </button>
         </div>
 
