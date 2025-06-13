@@ -1,14 +1,21 @@
 import { useState } from "react";
 import { Button, Form, Input, Typography, Divider } from "antd";
 import { GoogleOutlined, FacebookFilled, CloseOutlined } from "@ant-design/icons";
+import { Loader } from "lucide-react";
 
 const { Text, Link } = Typography;
 
 const Register = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const onFinish = (values: any) => {
     console.log(isLogin ? "Login data:" : "Register data:", values);
+    setLoading(true);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   };
 
   return (
@@ -100,14 +107,19 @@ const Register = () => {
             <Button
               htmlType="submit"
               size="large"
-              className="w-full rounded"
+              className="w-full rounded flex items-center justify-center gap-2"
               style={{
                 backgroundColor: "#46A358",
                 borderColor: "#46A358",
                 color: "white",
               }}
+              disabled={loading}
             >
-              {isLogin ? "Login" : "Register"}
+              {loading ? (
+                <Loader className="animate-spin" size={20} />
+              ) : (
+                isLogin ? "Login" : "Register"
+              )}
             </Button>
           </Form.Item>
         </Form>
@@ -140,3 +152,5 @@ const Register = () => {
 };
 
 export default Register;
+
+
